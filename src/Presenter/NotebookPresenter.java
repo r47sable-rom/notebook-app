@@ -1,5 +1,6 @@
 package Presenter;
 
+import Model.FileRepository;
 import Model.Note;
 import Model.Notebook;
 import View.Iview;
@@ -29,7 +30,10 @@ public class NotebookPresenter {
             LocalDateTime dateTime = LocalDateTime.parse(dateInput, formatter);
             Note note = new Note(dateTime, text);
             notebook.addNote(note);
+            notebook.saveNotes();
             view.showMessage("Запись успешно добавлена!");
+            view.showMessage("Файл сохранен!");
+
         } catch (Exception e) {
             view.showMessage("Неверный формат даты. Используйте yyyy-MM-dd HH:mm");
         }

@@ -8,8 +8,11 @@ import java.util.stream.Collectors;
 
 public class Notebook {
     private List<Note> notes = new ArrayList<>();
+    private final Irepository irepository;
 
     public Notebook(Irepository irepository) {
+        this.irepository = irepository;
+        this.notes = irepository.load();
     }
 
     public List<Note> getNotes() {
@@ -18,6 +21,10 @@ public class Notebook {
 
     public void addNote(Note note) {
         notes.add(note);
+    }
+
+    public void saveNotes(){
+        irepository.save(notes);
     }
 
     public List<Note> getNotesSortedByDate() {

@@ -10,10 +10,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Irepository irepository = new FileRepository("notes.dat");
-        Notebook notebook = new Notebook(irepository);
+        Irepository repo = new FileRepository("notes.dat");
+        Notebook notebook = new Notebook(repo);
         Iview view = new ConsoleView();
         NotebookPresenter presenter = new NotebookPresenter(view, notebook);
+        presenter.run();
 
     }
 }
