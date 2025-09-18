@@ -7,9 +7,11 @@ import java.util.List;
 
 public class FileRepository implements Irepository {
     private final String fileName;
+    private final Iview view;
 
-    public FileRepository(String fileName) {
+    public FileRepository(String fileName, Iview view) {
         this.fileName = fileName;
+        this.view = view;
     }
 
     @Override
@@ -17,7 +19,7 @@ public class FileRepository implements Irepository {
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))){
             oos.writeObject(notes);
         } catch(IOException e){
-            System.out.println("Ошибка при сохранении" + e.getMessage());
+            view.showMessage("Ошибка при сохранении" + e.getMessage());
         }
     }
 
@@ -26,10 +28,10 @@ public class FileRepository implements Irepository {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))){
             return (List<Note>) ois.readObject();
         } catch(FileNotFoundException e){
-            System.out.println("Файл отсутствует, загружать нечего.");
+            view.showMessage("Файл отсутствует, загружать нечего.");
             return new java.util.ArrayList<>();
         } catch (IOException | ClassNotFoundException e){
-            System.out.println("Ошибка при загрузке" + e.getMessage());
+            view.showMessage("Ошибка при загрузке" + e.getMessage());
             return new java.util.ArrayList<>();
         }
     }
