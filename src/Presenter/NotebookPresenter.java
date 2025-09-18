@@ -38,7 +38,7 @@ public class NotebookPresenter {
     public void showAllNotes() {
         List<Note> notes = notebook.getNotes();
         if (notes.isEmpty()) {
-            System.out.println("Записей пока нет");
+            view.showMessage("Записей пока нет");
         } else {
             for (Note note : notes) {
                 view.showMessage(note.toString());
@@ -49,7 +49,7 @@ public class NotebookPresenter {
     public void showSortedNotes() {
         List<Note> notes = notebook.getNotesSortedByDate();
         if (notes.isEmpty()) {
-            System.out.println("Записей пока нет");
+            view.showMessage("Записей пока нет");
         } else {
             for (Note note : notes) {
                 view.showMessage(note.toString());

@@ -3,7 +3,7 @@ package View;
 import java.util.Scanner;
 
 public class ConsoleView implements Iview {
-
+private final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void showMenu() {
@@ -22,7 +22,6 @@ public class ConsoleView implements Iview {
     @Override
     public String getUserInput(String message) {
         System.out.println(message + ": ");
-        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
 
     }

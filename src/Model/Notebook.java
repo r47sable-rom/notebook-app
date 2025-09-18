@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 public class Notebook {
     private List<Note> notes = new ArrayList<>();
 
+    public Notebook(Irepository irepository) {
+    }
+
     public List<Note> getNotes() {
         return notes;
     }
